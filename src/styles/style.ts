@@ -14,6 +14,13 @@ font-family: Roboto, sans-serif;
 list-style: none;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
 
 .container{
   max-width: 1024px;
@@ -24,6 +31,34 @@ list-style: none;
 }
 
 body{
+  -ms-overflow-style: none;
 background-color: ${Cores.Fundo};
+}
+
+.ola{
+
+  position: relative;
+  
+  &::after {
+    z-index: 2;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+}
+
+.dark-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 `

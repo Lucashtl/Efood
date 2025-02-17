@@ -25,13 +25,11 @@ const HeaderRestaurante = () => (
         </ItemLista>
       </Lista>
     </Header>
-    <div className="ola">
-      <ImageFrente>
-        <Restaurante>Italiana</Restaurante>
-        <RestauranteNome>La Dolce Vita Trattoria</RestauranteNome>
-        <Image src={Frente} />
-      </ImageFrente>
-    </div>
+    <ImageFrente>
+      <Restaurante>Italiana</Restaurante>
+      <RestauranteNome>La Dolce Vita Trattoria</RestauranteNome>
+      <Image src={Frente} />
+    </ImageFrente>
   </Container>
 )
 

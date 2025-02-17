@@ -7,7 +7,6 @@ import {
   Texto,
   ContainerBotao
 } from './style'
-import { useState } from 'react'
 
 type props = {
   image: string
@@ -16,8 +15,6 @@ type props = {
 }
 
 const PratosRestaurante = ({ image, titulo, texto }: props) => {
-  const [Detalhe, MudaDetalhe] = useState(true)
-
   return (
     <Container>
       <ContainerImage>

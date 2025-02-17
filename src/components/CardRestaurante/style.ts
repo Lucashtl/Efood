@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Cores } from '../styles/style'
+import { Cores } from '../../styles/style'
 
 export const Container = styled.div`
   width: 320px;

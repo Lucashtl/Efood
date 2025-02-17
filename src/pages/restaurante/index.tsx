@@ -42,11 +42,13 @@ const Pratos: Omit<Prato, 'nota' | 'destaque'>[] = [
   }
 ]
 
-export const Restaurante = () => (
-  <>
-    <HeaderRestaurante />
-    <div className="container">
-      <ListaPratos pratos={Pratos} />
-    </div>
-  </>
-)
+export const Restaurante = () => {
+  return (
+    <>
+      <HeaderRestaurante />
+      <div className="container">
+        <ListaPratos pratos={Pratos} />
+      </div>
+    </>
+  )
+}
