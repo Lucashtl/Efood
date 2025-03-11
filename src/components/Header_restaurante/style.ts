@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Fundo from '../../assets/fundo.png'
+import { Link } from 'react-router-dom'
 import { Cores } from '../../styles/style'
 
 export const Header = styled.div`
@@ -29,7 +30,10 @@ export const ItemLista = styled.li`
   font-size: 18px;
   font-weight: bold;
 `
-
+export const LinkVoltar = styled(Link)`
+  text-decoration: none;
+  color: ${Cores.Texto};
+`
 export const ImageFrente = styled.div`
   position: relative;
 

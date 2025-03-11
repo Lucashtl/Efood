@@ -6,6 +6,10 @@ export const Container = styled.div`
   background-color: ${Cores.Texto};
   display: flex;
   flex-direction: column;
+
+  .containerVisivel {
+    display: none;
+  }
 `
 export const ContainerImage = styled.div`
   align-items: center;

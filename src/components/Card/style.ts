@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Cores } from '../../styles/style'
 import { props } from '../Card/index'
+import { LinkVoltar } from '../Header_restaurante/style'
 export const Container = styled.div<
   Omit<props, 'titulo' | 'image' | 'texto' | 'destaque' | 'nota'>
 >`
@@ -35,6 +36,11 @@ export const Botao = styled(Destaque)`
   margin-left: 6px;
   margin-top: 16px;
   display: inline-block;
+  background-color: ${Cores.Destaque};
+  color: ${Cores.Texto};
+  ${LinkVoltar} {
+    color: ${Cores.Destaque};
+  }
 
   &:hover {
     cursor: pointer;

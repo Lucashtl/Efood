@@ -8,56 +8,106 @@ import {
   ContainerTexto,
   Image,
   Texto,
-  Titulo
+  Titulo,
+  Fechar
 } from './style'
-import Logo from '../../assets/image 1.png'
+import ImageFechar from '../../assets/close.png'
 import { Botao } from '../../components/Card/style'
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { abrir, adcionar } from '../../store/reducers/Carrinho'
+import { fechar } from '../../store/reducers/Carrinho'
+import FimDoPedido from '../../components/pagamento'
+import { RootReducer } from '../../store'
 type props = {
   pratos: Omit<Prato, 'nota' | 'destaque'>[]
+  pedido?: Omit<Prato, 'nota' | 'destaque'>
 }
 
-const ListaPratos = ({ pratos }: props) => {
-  const [Mostra, setMostrar] = useState(false)
+const ListaPratos = ({ pratos, pedido }: props) => {
+  const [Visibilidade, setVisibilidade] = useState<'true' | 'false'>('false')
+  const [titulo, SetTitulo] = useState('')
+  const [image, setImage] = useState('')
+  const [texto, setTexto] = useState('')
+  const [Preco, setpreco] = useState(0)
+  const [id, setId] = useState(0)
+  const dispach = useDispatch()
+  const { Abrir } = useSelector((state: RootReducer) => state.carrinho)
+  const mudaValor = () => {
+    if (Visibilidade === 'true') {
+      setVisibilidade('false')
+    } else {
+      setVisibilidade('true')
+    }
+  }
+
+  const NovoPedido = {
+    ...pedido,
+    Titulo: titulo,
+    id: id,
+    image: image,
+    texto: texto,
+    preco: Preco
+  }
 
   return (
     <>
       <Container>
         <Lista>
           {pratos.map((prato) => (
-            <PratosRestaurante
-              key={prato.Titulo}
-              image={prato.image}
-              titulo={prato.Titulo}
-              texto={prato.texto}
-            />
+            <li
+              key={prato.id}
+              onClick={() => {
+                SetTitulo(prato.Titulo)
+                setImage(prato.image)
+                setTexto(prato.texto)
+                setId(prato.id)
+                if (prato.preco) {
+                  setpreco(prato.preco)
+                }
+              }}
+            >
+              <PratosRestaurante
+                image={prato.image}
+                titulo={prato.Titulo}
+                texto={prato.texto}
+                onclick={mudaValor}
+              />
+            </li>
           ))}
         </Lista>
+        <FimDoPedido />
+        <div
+          onClick={() => dispach(fechar())}
+          className={Abrir === true ? 'overlay' : ''}
+        ></div>
       </Container>
-      <ContainerDetalhe className={Mostra ? 'visivel' : 'escondido'}>
+      <ContainerDetalhe
+        className={Visibilidade === 'true' ? 'visivel' : 'escondido'}
+      >
         <Card>
-          <Image src={Logo} />
+          <Fechar src={ImageFechar} onClick={mudaValor} />
+          <Image src={image} />
           <ContainerTexto>
-            <Titulo>Pizza Marguerita</Titulo>
+            <Titulo>{titulo}</Titulo>
             <Texto>
-              A pizza Margherita é uma pizza clássica da culinária italiana,
-              reconhecida por sua simplicidade e sabor inigualável. Ela é feita
-              com uma base de massa fina e crocante, coberta com molho de tomate
-              fresco, queijo mussarela de alta qualidade, manjericão fresco e
-              azeite de oliva extra-virgem. A combinação de sabores é perfeita,
-              com o molho de tomate suculento e ligeiramente ácido, o queijo
-              derretido e cremoso e as folhas de manjericão frescas, que
-              adicionam um toque de sabor herbáceo. É uma pizza simples, mas
-              deliciosa, que agrada a todos os paladares e é uma ótima opção
-              para qualquer ocasião.
+              {texto}
               <br />
               <br />
               Serve: de 2 a 3 pessoas
             </Texto>
-            <Botao>Adcionar ao Carrinho - R$ 60,90</Botao>
+            <Botao
+              onClick={() => {
+                dispach(adcionar(NovoPedido))
+                dispach(abrir())
+                setVisibilidade('false')
+              }}
+            >
+              Adcionar ao Carrinho - {Preco}
+            </Botao>
           </ContainerTexto>
         </Card>
-        <div onClick={() => setMostrar(false)} className="overlay"></div>
+        <div className="overlay" onClick={() => setVisibilidade('false')}></div>
       </ContainerDetalhe>
     </>
   )

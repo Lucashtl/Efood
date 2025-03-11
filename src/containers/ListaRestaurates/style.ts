@@ -5,6 +5,15 @@ import { Botao } from '../../components/Card/style'
 export const Container = styled.div`
   width: 512px;
   padding-top: 56px;
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+  }
 `
 export const Lista = styled.ul`
   display: grid;
@@ -38,7 +47,7 @@ export const Card = styled.div`
   width: 1024px;
   height: 344px;
   top: 150px;
-  left: 370px;
+  left: 210px;
   display: flex;
   color: white;
   z-index: 3;
@@ -64,3 +73,13 @@ export const Texto = styled.p`
   font-size: 14px;
 `
 export const ContainerTexto = styled.div``
+
+export const Fechar = styled.img`
+  max-width: 16px;
+  max-height: 16px;
+  width: 100%;
+  margin: 8px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+`

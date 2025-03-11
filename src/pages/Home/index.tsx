@@ -10,7 +10,8 @@ const Inicio: Prato[] = [
     Titulo: 'La Dolce Vita Trattoria ',
     texto:
       'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    nota: '4.9'
+    nota: '4.9',
+    id: 6
   },
   {
     destaque: ['Destaque da semana', 'Japonesa'],
@@ -18,7 +19,8 @@ const Inicio: Prato[] = [
     Titulo: 'La Dolce Vita Trattoria ',
     texto:
       'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    nota: '4.9'
+    nota: '4.9',
+    id: 7
   },
   {
     destaque: ['Destaque da semana', 'Japonesa'],
@@ -26,7 +28,8 @@ const Inicio: Prato[] = [
     Titulo: 'La Dolce Vita Trattoria ',
     texto:
       'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    nota: '4.9'
+    nota: '4.9',
+    id: 8
   },
   {
     destaque: ['Destaque da semana', 'Japonesa'],
@@ -34,7 +37,8 @@ const Inicio: Prato[] = [
     Titulo: 'La Dolce Vita Trattoria ',
     texto:
       'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    nota: '4.9'
+    nota: '4.9',
+    id: 9
   }
 ]
 

@@ -12,9 +12,10 @@ type props = {
   image: string
   titulo: string
   texto: string
+  onclick: () => void
 }
 
-const PratosRestaurante = ({ image, titulo, texto }: props) => {
+const PratosRestaurante = ({ image, titulo, texto, onclick }: props) => {
   return (
     <Container>
       <ContainerImage>
@@ -23,7 +24,7 @@ const PratosRestaurante = ({ image, titulo, texto }: props) => {
       <Titulo>{titulo}</Titulo>
       <Texto>{texto}</Texto>
       <ContainerBotao>
-        <Botão>Adcionar ao carrinho</Botão>
+        <Botão onClick={onclick}>Adcionar ao carrinho</Botão>
       </ContainerBotao>
     </Container>
   )

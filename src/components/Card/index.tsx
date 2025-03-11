@@ -11,6 +11,7 @@ import {
   DestaqueContainer,
   Botao
 } from './style'
+import { LinkVoltar } from '../Header_restaurante/style'
 import Star from '../../assets/star_favorite.png'
 
 export type props = {
@@ -42,7 +43,9 @@ const Card = ({ titulo, image, destaque, nota, texto, fundo }: props) => (
         </Span>
       </TituloContainer>
       <Texto>{texto}</Texto>
-      <Botao className="card-button">Saiba Mais</Botao>
+      <Botao className="card-button">
+        <LinkVoltar to="/Restaurante">Saiba Mais</LinkVoltar>
+      </Botao>
     </ContainerTexto>
   </Container>
 )
