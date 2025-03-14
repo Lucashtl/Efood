@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: none;
-  position: absolute;
+  position: fixed;
   background-color: ${Cores.Texto};
   width: 360px;
-  height: 237vh;
+  min-height: 100vh;
   right: 0;
   top: 0;
   padding: 7px;
