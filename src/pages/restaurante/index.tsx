@@ -58,9 +58,7 @@ export const Restaurante = () => {
   return (
     <>
       <HeaderRestaurante />
-      <div className="container">
-        <ListaPratos pratos={Pratos} />
-      </div>
+      <ListaPratos pratos={Pratos} />
     </>
   )
 }

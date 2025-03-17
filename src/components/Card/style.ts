@@ -6,9 +6,10 @@ export const Container = styled.div<
   Omit<props, 'titulo' | 'image' | 'texto' | 'destaque' | 'nota'>
 >`
   background-color: ${(props) =>
-    props.fundo === 'Branco' ? Cores.Fundo : Cores.Destaque};
+    props.fundo === 'Branco' ? Cores.FundoCard : Cores.Fundo};
   width: 472px;
   heigth: 398px;
+  font-family: roboto, sans-serif;
   color: ${(props) =>
     props.fundo === 'Branco' ? Cores.Texto : Cores.Destaque};
 `
@@ -58,8 +59,8 @@ export const ContainerImage = styled.div`
 `
 
 export const Texto = styled.p`
-  weight: 400;
-  font-size: 18px;
+  font-weight: 400;
+  font-size: 14px;
   line-height: 22px;
   padding: 8px;
 `

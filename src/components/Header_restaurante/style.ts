@@ -16,7 +16,7 @@ export const Lista = styled.ul`
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  width: 100%;
+  width: 80%;
   max-width: 90%;
   padding-top: 63px;
 `

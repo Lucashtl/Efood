@@ -3,8 +3,9 @@ import { Cores } from '../../styles/style'
 import { Botao } from '../../components/Card/style'
 
 export const Container = styled.div`
-  width: 512px;
+  width: 712px;
   padding-top: 56px;
+  margin-left: 135px;
   .overlay {
     position: fixed;
     top: 0;

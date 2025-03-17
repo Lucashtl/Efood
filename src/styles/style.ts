@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components'
 export const Cores = {
   Texto: '#E66767',
   Fundo: '#FFF8F2',
-  Destaque: '#FFEBD9'
+  Destaque: '#FFEBD9',
+  FundoCard: '#FFFFFF'
 }
 
 export const GlobalStyle = createGlobalStyle`

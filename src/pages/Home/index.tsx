@@ -2,11 +2,11 @@ import Pratos from '../../containers/Pratos'
 import Prato from '../../models/Pratos'
 import Spaguetti from '../../assets/image 1.png'
 import Hero from '../../components/Hero'
-
+import Sushi from '../../assets/imagem.png'
 const Inicio: Prato[] = [
   {
     destaque: ['Destaque da semana', 'Japonesa'],
-    image: Spaguetti,
+    image: Sushi,
     Titulo: 'La Dolce Vita Trattoria ',
     texto:
       'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
@@ -14,7 +14,7 @@ const Inicio: Prato[] = [
     id: 6
   },
   {
-    destaque: ['Destaque da semana', 'Japonesa'],
+    destaque: ['Italiana'],
     image: Spaguetti,
     Titulo: 'La Dolce Vita Trattoria ',
     texto:
@@ -23,7 +23,7 @@ const Inicio: Prato[] = [
     id: 7
   },
   {
-    destaque: ['Destaque da semana', 'Japonesa'],
+    destaque: ['Italiana'],
     image: Spaguetti,
     Titulo: 'La Dolce Vita Trattoria ',
     texto:
@@ -32,7 +32,7 @@ const Inicio: Prato[] = [
     id: 8
   },
   {
-    destaque: ['Destaque da semana', 'Japonesa'],
+    destaque: ['Italiana'],
     image: Spaguetti,
     Titulo: 'La Dolce Vita Trattoria ',
     texto:
