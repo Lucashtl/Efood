@@ -9,10 +9,10 @@ import {
   Image,
   Texto,
   Titulo,
-  Fechar
+  Fechar,
+  Botao
 } from './style'
 import ImageFechar from '../../assets/close.png'
-import { Botao } from '../../components/Card/style'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { abrir, adcionar } from '../../store/reducers/Carrinho'

@@ -42,13 +42,15 @@ const Inicio: Prato[] = [
   }
 ]
 
-const Home = () => (
-  <>
-    <Hero />
-    <div className="container">
-      <Pratos pratos={Inicio} fundo={'Branco'} />
-    </div>
-  </>
-)
+const Home = () => {
+  return (
+    <>
+      <Hero />
+      <div className="container">
+        <Pratos pratos={Inicio} fundo={'Branco'} />
+      </div>
+    </>
+  )
+}
 
 export default Home

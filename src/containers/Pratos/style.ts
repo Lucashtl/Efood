@@ -10,8 +10,7 @@ export const Lista = styled.ul<Omit<props, 'pratos'>>`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  padding-top: 80px;
-
+  margin-top: 80px;
   .destaque {
     background-color: ${(props) =>
       props.fundo === 'Rosa' ? Cores.Fundo : Cores.Texto};

@@ -10,9 +10,9 @@ export const Cores = {
 export const GlobalStyle = createGlobalStyle`
 * {
 box-sizing: border-box;
-margin: 0;
-font-family: Roboto, sans-serif;
+font-family: 'Roboto', sans-serif;
 list-style: none;
+margin: 0 ;
 }
 
 ::-webkit-scrollbar {

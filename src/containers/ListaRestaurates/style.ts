@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import { Cores } from '../../styles/style'
-import { Botao } from '../../components/Card/style'
 
 export const Container = styled.div`
-  width: 712px;
+  width: 100%;
   padding-top: 56px;
-  margin-left: 135px;
+  display: flex;
+  flex-direction: columns;
+  justify-content: center;
   .overlay {
     position: fixed;
     top: 0;
@@ -40,6 +41,26 @@ export const ContainerDetalhe = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 2;
+  }
+`
+
+export const Botao = styled.div`
+  margin-left: 6px;
+  margin-top: 16px;
+  display: inline-block;
+  background-color: ${Cores.Texto};
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 14px;
+  align-items: center;
+  text-align: center;
+  padding: 7px;
+  margin-right: 8px;
+  background-color: ${Cores.Destaque};
+  color: ${Cores.Texto};
+
+  &:hover {
+    cursor: pointer;
   }
 `
 export const Card = styled.div`

@@ -3,12 +3,15 @@ import { Cores } from '../../styles/style'
 import { props } from '../Card/index'
 import { LinkVoltar } from '../Header_restaurante/style'
 export const Container = styled.div<
-  Omit<props, 'titulo' | 'image' | 'texto' | 'destaque' | 'nota'>
+  Omit<props, 'titulo' | 'image' | 'texto' | 'destaque' | 'nota' | 'tipo'>
 >`
   background-color: ${(props) =>
     props.fundo === 'Branco' ? Cores.FundoCard : Cores.Fundo};
   width: 472px;
-  heigth: 398px;
+  height: 398px;
+  max-height: 100%;
+  margin-bottom: 48px;
+  background-color: ${Cores.FundoCard};
   font-family: roboto, sans-serif;
   color: ${(props) =>
     props.fundo === 'Branco' ? Cores.Texto : Cores.Destaque};
@@ -17,9 +20,12 @@ export const Titulo = styled.h4`
   weigth: 700;
   font-size: 18px;
   line-height: 21px;
+  padding: 8px;
+  margin-top: 8px;
 `
 export const Image = styled.img`
   object-fit: cover;
+  height: 217px;
   width: 100%;
 `
 export const Destaque = styled.span`
@@ -36,6 +42,7 @@ export const Destaque = styled.span`
 export const Botao = styled(Destaque)`
   margin-left: 6px;
   margin-top: 16px;
+  margin-bottom: 8px;
   display: inline-block;
   background-color: ${Cores.Destaque};
   color: ${Cores.Texto};
@@ -56,30 +63,39 @@ export const DestaqueContainer = styled.div`
 
 export const ContainerImage = styled.div`
   position: relative;
+  margin: 0;
 `
 
 export const Texto = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
-  padding: 8px;
+  margin-top: 16px;
+  padding: 0 8px;
 `
 export const TituloContainer = styled.div`
   display: flex;
+  height: 20px;
+  align-items: center;
   justify-content: space-between;
-  padding: 7px;
 `
 
 export const ContainerTexto = styled.div`
   border-bottom: 1px solid ${Cores.Texto};
   border-right: 1px solid ${Cores.Texto};
   border-left: 1px solid ${Cores.Texto};
-  padding-bottom: 10px;
+  overflow: hidden;
 `
 export const Span = styled.span`
   color: ${Cores.Texto};
+  display: flex;
+  text-align: center;
+  align-items: center;
   font-size: 18px;
   font-weight: 700;
   line-heigth: 21px;
-  text-align: center;
+
+  img {
+    margin-left: 5px;
+  }
 `
