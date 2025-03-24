@@ -26,7 +26,6 @@ export const Lista = styled.ul`
 export const ContainerDetalhe = styled.div`
   width: 100%;
   background-color: black;
-
   &.visivel {
     display: flex;
   }
@@ -69,7 +68,7 @@ export const Card = styled.div`
   width: 1024px;
   height: 344px;
   top: 150px;
-  left: 210px;
+  left: 130px;
   display: flex;
   color: white;
   z-index: 3;

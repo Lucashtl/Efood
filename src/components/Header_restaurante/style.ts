@@ -13,16 +13,23 @@ export const Header = styled.div`
 `
 export const Lista = styled.ul`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  width: 80%;
-  max-width: 90%;
+  justify-content: space-between;
+  flex-align: center;
+  width: 100%;
+  margin: 0 auto;
   padding-top: 63px;
 `
 
 export const Container = styled.div`
   background-color: ${Cores.Fundo};
+`
+
+export const ContainerNome = styled.div`
+  max-width: 1300px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
 `
 
 export const ItemLista = styled.li`
@@ -36,7 +43,6 @@ export const LinkVoltar = styled(Link)`
 `
 export const ImageFrente = styled.div`
   position: relative;
-
   &::after {
     content: '';
     position: absolute;

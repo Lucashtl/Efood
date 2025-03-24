@@ -88,6 +88,7 @@ export const ContainerTexto = styled.div`
 `
 export const Span = styled.span`
   color: ${Cores.Texto};
+  margin-right: 5px;
   display: flex;
   text-align: center;
   align-items: center;
