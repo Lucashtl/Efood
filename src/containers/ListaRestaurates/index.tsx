@@ -85,28 +85,30 @@ const ListaPratos = ({ pratos, pedido }: props) => {
       <ContainerDetalhe
         className={Visibilidade === 'true' ? 'visivel' : 'escondido'}
       >
-        <Card>
-          <Fechar src={ImageFechar} onClick={mudaValor} />
-          <Image src={image} />
-          <ContainerTexto>
-            <Titulo>{titulo}</Titulo>
-            <Texto>
-              {texto}
-              <br />
-              <br />
-              Serve: de 2 a 3 pessoas
-            </Texto>
-            <Botao
-              onClick={() => {
-                dispach(adcionar(NovoPedido))
-                dispach(abrir())
-                setVisibilidade('false')
-              }}
-            >
-              Adcionar ao Carrinho - {Preco}
-            </Botao>
-          </ContainerTexto>
-        </Card>
+        <div className="regu">
+          <Card>
+            <Fechar src={ImageFechar} onClick={mudaValor} />
+            <Image src={image} />
+            <ContainerTexto>
+              <Titulo>{titulo}</Titulo>
+              <Texto>
+                {texto}
+                <br />
+                <br />
+                Serve: de 2 a 3 pessoas
+              </Texto>
+              <Botao
+                onClick={() => {
+                  dispach(adcionar(NovoPedido))
+                  dispach(abrir())
+                  setVisibilidade('false')
+                }}
+              >
+                Adcionar ao Carrinho - {Preco}
+              </Botao>
+            </ContainerTexto>
+          </Card>
+        </div>
         <div className="overlay" onClick={() => setVisibilidade('false')}></div>
       </ContainerDetalhe>
     </>

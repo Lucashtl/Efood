@@ -26,6 +26,11 @@ export const Lista = styled.ul`
 export const ContainerDetalhe = styled.div`
   width: 100%;
   background-color: black;
+  .regu {
+    position: relative;
+    margin: 0 auto;
+    width: 970px;
+  }
   &.visivel {
     display: flex;
   }
@@ -63,12 +68,11 @@ export const Botao = styled.div`
   }
 `
 export const Card = styled.div`
-  position: fixed;
+  position: absolute;
   background-color: ${Cores.Texto};
   width: 1024px;
   height: 344px;
-  top: 150px;
-  left: 130px;
+  top: -730px;
   display: flex;
   color: white;
   z-index: 3;
