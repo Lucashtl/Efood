@@ -9,45 +9,51 @@ import {
   ContainerImage,
   Destaque,
   DestaqueContainer,
-  Botao
+  Botao,
+  Voltar
 } from './style'
-import { LinkVoltar } from '../Header_restaurante/style'
 import Star from '../../assets/star_favorite.png'
+import { useNavigate } from 'react-router-dom'
+import { Tipo } from '../../pages/Home'
 
 export type props = {
-  titulo: string
-  image: string
-  destaque: string[]
-  nota: string
-  texto: string
-  fundo: 'Rosa' | 'Branco'
+  itens: Tipo
 }
 
-const Card = ({ titulo, image, destaque, nota, texto, fundo }: props) => (
-  <Container className="container-card" fundo={fundo}>
-    <ContainerTexto>
-      <ContainerImage>
-        <Image src={image} alt="" />
-        <DestaqueContainer>
-          {destaque.map((desta) => (
-            <Destaque className="destaque" key={desta}>
-              {desta}
-            </Destaque>
-          ))}
-        </DestaqueContainer>
-      </ContainerImage>
-      <TituloContainer>
-        <Titulo>{titulo} </Titulo>
-        <Span>
-          {nota} <img src={Star} alt="" />
-        </Span>
-      </TituloContainer>
-      <Texto>{texto}</Texto>
-      <Botao className="card-button">
-        <LinkVoltar to="/Restaurante">Saiba Mais</LinkVoltar>
-      </Botao>
-    </ContainerTexto>
-  </Container>
-)
+const Card = ({ itens }: props) => {
+  const navegate = useNavigate()
+
+  return (
+    <Container className="container-card">
+      <ContainerTexto>
+        <ContainerImage>
+          <Image src={itens.capa} alt="" />
+          <DestaqueContainer>
+            {itens.destacado ? (
+              <>
+                <Destaque>Destacado</Destaque>
+                <Destaque>{itens.tipo}</Destaque>
+              </>
+            ) : (
+              <Destaque>{itens.tipo}</Destaque>
+            )}
+          </DestaqueContainer>
+        </ContainerImage>
+        <TituloContainer>
+          <Titulo>{itens.titulo} </Titulo>
+          <Span>
+            {itens.avaliacao} <img src={Star} alt="" />
+          </Span>
+        </TituloContainer>
+        <Texto>{itens.descricao}</Texto>
+        <Botao className="card-button">
+          <Voltar onClick={() => navegate(`/restaurante/${itens.id}`)}>
+            Saiba Mais
+          </Voltar>
+        </Botao>
+      </ContainerTexto>
+    </Container>
+  )
+}
 
 export default Card

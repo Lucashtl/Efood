@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: columns;
   justify-content: center;
+
   .overlay {
     position: fixed;
     top: 0;
@@ -26,16 +27,17 @@ export const Lista = styled.ul`
 export const ContainerDetalhe = styled.div`
   width: 100%;
   background-color: black;
-  .regu {
-    position: relative;
-    margin: 0 auto;
-    width: 970px;
-  }
+
   &.visivel {
     display: flex;
   }
   &.escondido {
     display: none;
+  }
+  .regu {
+    position: relative;
+    margin: 0 auto;
+    width: 970px;
   }
   .overlay {
     position: fixed;
@@ -68,13 +70,13 @@ export const Botao = styled.div`
   }
 `
 export const Card = styled.div`
-  position: absolute;
+  position: fixed;
   background-color: ${Cores.Texto};
   width: 1024px;
   height: 344px;
-  top: -730px;
   display: flex;
   color: white;
+  top: 150px;
   z-index: 3;
   ${Botao} {
     background-color: white;

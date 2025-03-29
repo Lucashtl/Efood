@@ -13,6 +13,7 @@ box-sizing: border-box;
 font-family: 'Roboto', sans-serif;
 list-style: none;
 margin: 0 ;
+padding: 0;
 }
 
 ::-webkit-scrollbar {
@@ -27,7 +28,6 @@ html {
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
-    
 }
 
 body{

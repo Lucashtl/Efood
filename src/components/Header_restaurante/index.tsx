@@ -1,5 +1,6 @@
 import {
   Container,
+  ContainerNome,
   Header,
   Image,
   ImageFrente,
@@ -7,19 +8,24 @@ import {
   LinkVoltar,
   Lista,
   Restaurante,
-  RestauranteNome,
-  ContainerNome
+  RestauranteNome
 } from './style'
 import { RootReducer } from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
 import { abrir } from '../../store/reducers/Carrinho'
-import Frente from '../../assets/image 2.png'
 import logo from '../../assets/logo (1).png'
-
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 const HeaderRestaurante = () => {
   const { itens } = useSelector((state: RootReducer) => state.carrinho)
   const dispach = useDispatch()
-
+  const { id } = useParams()
+  const [Frente, setFrente] = useState('')
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((resp) => resp.json())
+      .then((resp) => setFrente(resp.capa))
+  }, [id])
   return (
     <Container>
       <Header>

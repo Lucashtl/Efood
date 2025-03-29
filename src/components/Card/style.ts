@@ -1,20 +1,14 @@
 import styled from 'styled-components'
 import { Cores } from '../../styles/style'
-import { props } from '../Card/index'
-import { LinkVoltar } from '../Header_restaurante/style'
-export const Container = styled.div<
-  Omit<props, 'titulo' | 'image' | 'texto' | 'destaque' | 'nota' | 'tipo'>
->`
-  background-color: ${(props) =>
-    props.fundo === 'Branco' ? Cores.FundoCard : Cores.Fundo};
+export const Container = styled.div`
+  background-color: ${Cores.FundoCard};
   width: 472px;
-  height: 398px;
+  height: 420px;
   max-height: 100%;
   margin-bottom: 48px;
   background-color: ${Cores.FundoCard};
-  font-family: roboto, sans-serif;
-  color: ${(props) =>
-    props.fundo === 'Branco' ? Cores.Texto : Cores.Destaque};
+  font-family: 'Roboto', sans-serif;
+  color: ${Cores.Texto};
 `
 export const Titulo = styled.h4`
   weigth: 700;
@@ -30,6 +24,7 @@ export const Image = styled.img`
 `
 export const Destaque = styled.span`
   background-color: ${Cores.Texto};
+  color: ${Cores.Fundo};
   font-weight: 700;
   font-size: 13px;
   line-height: 14px;
@@ -38,21 +33,17 @@ export const Destaque = styled.span`
   padding: 7px;
   margin-right: 8px;
 `
-
-export const Botao = styled(Destaque)`
-  margin-left: 6px;
-  margin-top: 16px;
-  margin-bottom: 8px;
-  display: inline-block;
-  background-color: ${Cores.Destaque};
-  color: ${Cores.Texto};
-  ${LinkVoltar} {
-    color: ${Cores.Destaque};
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
+export const Voltar = styled.button`
+  text-decoration: none;
+  color: ${Cores.Destaque};
+  background-color: ${Cores.Texto};
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+`
+export const Botao = styled.div`
+  bottom: 15px;
+  left: 10px;
 `
 
 export const DestaqueContainer = styled.div`
@@ -81,20 +72,29 @@ export const TituloContainer = styled.div`
 `
 
 export const ContainerTexto = styled.div`
+  position: relative;
   border-bottom: 1px solid ${Cores.Texto};
   border-right: 1px solid ${Cores.Texto};
   border-left: 1px solid ${Cores.Texto};
   overflow: hidden;
+  max-height: 420px;
+  min-height: 420px;
+
+  .card-button {
+    background-color: ${Cores.Texto};
+    cursor: pointer;
+    position: absolute;
+  }
 `
 export const Span = styled.span`
   color: ${Cores.Texto};
-  margin-right: 5px;
   display: flex;
   text-align: center;
   align-items: center;
   font-size: 18px;
   font-weight: 700;
   line-heigth: 21px;
+  margin-right: 5px;
 
   img {
     margin-left: 5px;

@@ -3,6 +3,8 @@ import { Cores } from '../../styles/style'
 
 export const Container = styled.div`
   width: 320px;
+  position: relative;
+  min-height: 438px;
   background-color: ${Cores.Texto};
   display: flex;
   flex-direction: column;
@@ -32,10 +34,13 @@ export const Texto = styled.p`
   font-size: 14px;
   line-height: 22px;
   color: ${Cores.Destaque};
-  padding: 8px;
+  padding: 0 8px;
 `
 
 export const Botão = styled.button`
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
   width: 304px;
   height: 24px;
   background-color: ${Cores.Destaque};

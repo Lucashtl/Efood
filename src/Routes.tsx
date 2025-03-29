@@ -5,7 +5,7 @@ import { Restaurante } from './pages/restaurante'
 const Rotas = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/Restaurante" element={<Restaurante />} />
+    <Route path="/Restaurante/:id" element={<Restaurante />} />
   </Routes>
 )
 

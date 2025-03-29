@@ -1,5 +1,4 @@
 import PratosRestaurante from '../../components/CardRestaurante'
-import Prato from '../../models/Pratos'
 import {
   Container,
   ContainerDetalhe,
@@ -13,25 +12,43 @@ import {
   Botao
 } from './style'
 import ImageFechar from '../../assets/close.png'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { abrir, adcionar } from '../../store/reducers/Carrinho'
 import { fechar } from '../../store/reducers/Carrinho'
 import FimDoPedido from '../../components/pagamento'
 import { RootReducer } from '../../store'
+import { Tipo } from '../../pages/Home'
+import { useParams } from 'react-router-dom'
 type props = {
-  pratos: Omit<Prato, 'nota' | 'destaque'>[]
-  pedido?: Omit<Prato, 'nota' | 'destaque'>
+  pedido?: Tipo
 }
 
-const ListaPratos = ({ pratos, pedido }: props) => {
+type ItemCardapio = {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
+}
+
+const ListaPratos = ({ pedido }: props) => {
   const [Visibilidade, setVisibilidade] = useState<'true' | 'false'>('false')
   const [titulo, SetTitulo] = useState('')
   const [image, setImage] = useState('')
   const [texto, setTexto] = useState('')
   const [Preco, setpreco] = useState(0)
-  const [id, setId] = useState(0)
+  const [Id, setId] = useState(0)
+  const { id } = useParams()
   const dispach = useDispatch()
+  const [Cardapio, setCardapio] = useState<ItemCardapio[]>([])
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((resp) => resp.json())
+      .then((resp) => setCardapio(resp.cardapio))
+  }, [id])
   const { Abrir } = useSelector((state: RootReducer) => state.carrinho)
   const mudaValor = () => {
     if (Visibilidade === 'true') {
@@ -44,7 +61,7 @@ const ListaPratos = ({ pratos, pedido }: props) => {
   const NovoPedido = {
     ...pedido,
     Titulo: titulo,
-    id: id,
+    id: Id,
     image: image,
     texto: texto,
     preco: Preco
@@ -54,13 +71,13 @@ const ListaPratos = ({ pratos, pedido }: props) => {
     <>
       <Container>
         <Lista>
-          {pratos.map((prato) => (
+          {Cardapio.map((prato) => (
             <li
               key={prato.id}
               onClick={() => {
-                SetTitulo(prato.Titulo)
-                setImage(prato.image)
-                setTexto(prato.texto)
+                SetTitulo(prato.nome)
+                setImage(prato.foto)
+                setTexto(prato.descricao)
                 setId(prato.id)
                 if (prato.preco) {
                   setpreco(prato.preco)
@@ -68,9 +85,9 @@ const ListaPratos = ({ pratos, pedido }: props) => {
               }}
             >
               <PratosRestaurante
-                image={prato.image}
-                titulo={prato.Titulo}
-                texto={prato.texto}
+                image={prato.foto}
+                titulo={prato.nome}
+                texto={prato.descricao}
                 onclick={mudaValor}
               />
             </li>
@@ -99,8 +116,8 @@ const ListaPratos = ({ pratos, pedido }: props) => {
               </Texto>
               <Botao
                 onClick={() => {
-                  dispach(adcionar(NovoPedido))
                   dispach(abrir())
+                  dispach(adcionar(NovoPedido))
                   setVisibilidade('false')
                 }}
               >

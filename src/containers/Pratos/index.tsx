@@ -1,24 +1,15 @@
 import { Container, Lista } from './style'
 import Card from '../../components/Card'
-import Prato from '../../models/Pratos'
+import { Tipo } from '../../pages/Home'
 export type props = {
-  pratos: Prato[]
-  fundo: 'Branco' | 'Rosa'
+  pratos: Tipo[]
 }
-const Pratos = ({ pratos, fundo }: props) => {
+const Pratos = ({ pratos }: props) => {
   return (
     <Container>
-      <Lista fundo={fundo}>
+      <Lista>
         {pratos.map((prato) => (
-          <Card
-            key={prato.id}
-            titulo={prato.Titulo}
-            image={prato.image}
-            destaque={prato.destaque}
-            nota={prato.nota}
-            texto={prato.texto}
-            fundo={'Branco'}
-          />
+          <Card itens={prato} key={prato.id} />
         ))}
       </Lista>
     </Container>

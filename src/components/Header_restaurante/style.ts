@@ -13,23 +13,15 @@ export const Header = styled.div`
 `
 export const Lista = styled.ul`
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  flex-align: center;
+  align-items: center;
+  text-align: center;
   width: 100%;
-  margin: 0 auto;
   padding-top: 63px;
 `
 
 export const Container = styled.div`
   background-color: ${Cores.Fundo};
-`
-
-export const ContainerNome = styled.div`
-  max-width: 1300px;
-  width: 100%;
-  position: relative;
-  margin: 0 auto;
 `
 
 export const ItemLista = styled.li`
@@ -43,6 +35,7 @@ export const LinkVoltar = styled(Link)`
 `
 export const ImageFrente = styled.div`
   position: relative;
+
   &::after {
     content: '';
     position: absolute;
@@ -53,6 +46,13 @@ export const ImageFrente = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
   }
 `
+export const ContainerNome = styled.div`
+  max-width: 1400px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+`
+
 export const Restaurante = styled.h4`
   position: absolute;
   font-size: 32px;
@@ -75,6 +75,7 @@ export const RestauranteNome = styled.h4`
 `
 
 export const Image = styled.img`
+  object-fit: cover;
   width: 100%;
   height: 280px;
 `
