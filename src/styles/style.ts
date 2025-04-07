@@ -62,3 +62,9 @@ background-color: ${Cores.Fundo};
   z-index: 999;
 }
 `
+export const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}

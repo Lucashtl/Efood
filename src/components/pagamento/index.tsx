@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { fechar, remover, limpaCarrinho } from '../../store/reducers/Carrinho'
 import Lixeira from '../../assets/lixeira-de-reciclagem 1.png'
+import { formataPreco } from '../../styles/style'
 const FimDoPedido = () => {
   const [confirmacao, setConfirmacao] = useState(false)
   const [Pagamento, setPagamento] = useState(false)
   const [Mensagem, setMensagem] = useState(false)
   const [Endereco, setEndereco] = useState(false)
-  const [Numero, SetNumero] = useState(0)
+  const [Numero, SetNumero] = useState('')
   const { Abrir } = useSelector((state: RootReducer) => state.carrinho)
   const { itens } = useSelector((state: RootReducer) => state.carrinho)
   const Dispach = useDispatch()
@@ -31,7 +32,7 @@ const FimDoPedido = () => {
     for (let i = 0; i < itens.length; i++) {
       Total += itens[i].preco ?? 0
     }
-    SetNumero(Total)
+    SetNumero(formataPreco(Total))
   }, [itens])
 
   const handleSubmit = (event: React.FormEvent) => {
