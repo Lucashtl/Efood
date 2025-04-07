@@ -1,6 +1,6 @@
 import Pratos from '../../containers/Pratos'
 import Hero from '../../components/Hero'
-import { useEffect, useState } from 'react'
+import { useGetPratoQuery } from '../../services/api'
 
 interface Carda {
   foto: string
@@ -23,20 +23,18 @@ export type Tipo = {
 }
 
 const Home = () => {
-  const [pra, setPra] = useState<Tipo[]>([])
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setPra(res))
-  }, [])
-  return (
-    <>
-      <Hero />
-      <div className="container">
-        <Pratos pratos={pra} />
-      </div>
-    </>
-  )
+  const { data } = useGetPratoQuery()
+  if (data) {
+    return (
+      <>
+        <Hero />
+        <div className="container">
+          <Pratos pratos={data} />
+        </div>
+      </>
+    )
+  }
+  return <h4>Carregando...</h4>
 }
 
 export default Home

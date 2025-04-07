@@ -12,7 +12,6 @@ import {
   Botao
 } from './style'
 import ImageFechar from '../../assets/close.png'
-import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { abrir, adcionar } from '../../store/reducers/Carrinho'
 import { fechar } from '../../store/reducers/Carrinho'
@@ -20,17 +19,10 @@ import FimDoPedido from '../../components/pagamento'
 import { RootReducer } from '../../store'
 import { Tipo } from '../../pages/Home'
 import { useParams } from 'react-router-dom'
+import { useGetRestPratoQuery } from '../../services/api'
+import { useState } from 'react'
 type props = {
   pedido?: Tipo
-}
-
-type ItemCardapio = {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
 }
 
 const ListaPratos = ({ pedido }: props) => {
@@ -41,14 +33,8 @@ const ListaPratos = ({ pedido }: props) => {
   const [Preco, setpreco] = useState(0)
   const [Id, setId] = useState(0)
   const { id } = useParams()
+  const { data: Cardapio, isLoading } = useGetRestPratoQuery(id!)
   const dispach = useDispatch()
-  const [Cardapio, setCardapio] = useState<ItemCardapio[]>([])
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((resp) => resp.json())
-      .then((resp) => setCardapio(resp.cardapio))
-  }, [id])
   const { Abrir } = useSelector((state: RootReducer) => state.carrinho)
   const mudaValor = () => {
     if (Visibilidade === 'true') {
@@ -67,11 +53,17 @@ const ListaPratos = ({ pedido }: props) => {
     preco: Preco
   }
 
+  if (isLoading) {
+    return <h4>Caregando...</h4>
+  }
+  if (!Cardapio) {
+    return null
+  }
   return (
     <>
       <Container>
         <Lista>
-          {Cardapio.map((prato) => (
+          {Cardapio.cardapio.map((prato) => (
             <li
               key={prato.id}
               onClick={() => {
