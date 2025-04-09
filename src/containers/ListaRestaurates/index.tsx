@@ -15,7 +15,6 @@ import ImageFechar from '../../assets/close.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { abrir, adcionar } from '../../store/reducers/Carrinho'
 import { fechar } from '../../store/reducers/Carrinho'
-import FimDoPedido from '../../components/pagamento'
 import { RootReducer } from '../../store'
 import { Tipo } from '../../pages/Home'
 import { useParams } from 'react-router-dom'
@@ -46,9 +45,9 @@ const ListaPratos = ({ pedido }: props) => {
 
   const NovoPedido = {
     ...pedido,
-    Titulo: titulo,
+    nome: titulo,
     id: Id,
-    image: image,
+    foto: image,
     texto: texto,
     preco: Preco
   }
@@ -85,7 +84,6 @@ const ListaPratos = ({ pedido }: props) => {
             </li>
           ))}
         </Lista>
-        <FimDoPedido />
         <div
           onClick={() => dispach(fechar())}
           className={Abrir === true ? 'overlay' : ''}

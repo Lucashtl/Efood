@@ -1,14 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import Prato from '../../models/Pratos'
 
 type props = {
-  itens: Omit<Prato, 'nota' | 'destaque'>[]
+  itens: Omit<Product, 'descricao' | 'porcao'>[]
   Abrir: boolean
+  sidebar: 'cart' | 'delivery' | 'payment' | 'confirm'
+  totalPrice: number
 }
 
 const initialState: props = {
   itens: [],
-  Abrir: false
+  Abrir: false,
+  sidebar: 'cart',
+  totalPrice: 0
 }
 
 const Carrinhoslicer = createSlice({
@@ -17,12 +20,16 @@ const Carrinhoslicer = createSlice({
   reducers: {
     adcionar: (
       state,
-      action: PayloadAction<Omit<Prato, 'nota' | 'destaque'>>
+      action: PayloadAction<Omit<Product, 'descricao' | 'porcao'>>
     ) => {
       const pedido = state.itens.find((pe) => pe.id === action.payload.id)
 
       if (!pedido) {
         state.itens.push(action.payload)
+        state.totalPrice = state.itens.reduce(
+          (total, item) => total + item.preco,
+          0
+        )
       } else {
         alert('O item já esta no carrinho')
       }
@@ -33,15 +40,35 @@ const Carrinhoslicer = createSlice({
     limpaCarrinho: (state) => {
       state.itens = []
     },
+
     abrir: (state) => {
       state.Abrir = true
     },
     fechar: (state) => {
       state.Abrir = false
+    },
+    setSidebar: (
+      state,
+      action: PayloadAction<'cart' | 'delivery' | 'payment' | 'confirm'>
+    ) => {
+      state.sidebar = action.payload
+    },
+    setTotalPrice: (state) => {
+      state.totalPrice = state.itens.reduce(
+        (total, item) => total + item.preco,
+        0
+      )
     }
   }
 })
 
 export default Carrinhoslicer.reducer
-export const { abrir, adcionar, fechar, remover, limpaCarrinho } =
-  Carrinhoslicer.actions
+export const {
+  abrir,
+  adcionar,
+  fechar,
+  remover,
+  limpaCarrinho,
+  setSidebar,
+  setTotalPrice
+} = Carrinhoslicer.actions

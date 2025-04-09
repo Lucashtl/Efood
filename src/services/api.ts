@@ -11,9 +11,17 @@ const api = createApi({
     }),
     getRestPrato: builder.query<Tipo, string>({
       query: (id) => `restaurantes/${id}`
+    }),
+    purchase: builder.mutation<CheckoutResponse, CheckoutProps>({
+      query: (body) => ({
+        url: 'checkout',
+        method: 'POST',
+        body
+      })
     })
   })
 })
 
-export const { useGetPratoQuery, useGetRestPratoQuery } = api
+export const { useGetPratoQuery, useGetRestPratoQuery, usePurchaseMutation } =
+  api
 export default api

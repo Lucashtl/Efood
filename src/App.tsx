@@ -1,19 +1,26 @@
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import Footer from './components/footer'
 import Rotas from './Routes'
 import { GlobalStyle } from './styles/style'
 import { BrowserRouter } from 'react-router-dom'
-import store from './store'
+import store, { RootReducer } from './store'
+import CartPagamento from './components/cardPagamento'
 function App() {
   return (
-    <BrowserRouter>
-      <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
         <GlobalStyle />
+        <CartCheckout />
         <Rotas />
         <Footer />
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   )
+}
+
+function CartCheckout() {
+  const sidebar = useSelector((state: RootReducer) => state.carrinho.sidebar)
+  return <CartPagamento sidebar={sidebar} />
 }
 
 export default App

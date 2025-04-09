@@ -1,3 +1,4 @@
+import { Form, Field } from 'formik'
 import { Cores } from '../../styles/style'
 import styled from 'styled-components'
 
@@ -130,18 +131,6 @@ export const CarrinhoTitulo = styled.h3`
   font-weight: bold;
 `
 
-export const Field = styled.div`
-  display: block;
-  width: 100%;
-  input {
-    width: 100%;
-    padding: 8px;
-    background-color: ${Cores.Destaque};
-    border: 1px solid ${Cores.Destaque};
-    margin: 8px 0;
-  }
-`
-
 export const PaymentContainer = styled.div`
   p {
     font-size: 16px;
@@ -179,6 +168,20 @@ export const PaymentContainer = styled.div`
     }
   }
 `
+type InputProps = {
+  maxWidth?: string
+}
+
+export const FormCheckout = styled(Form)`
+  > h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  ${Botao} {
+    margin-bottom: 8px;
+  }
+`
 
 export const ConfirmedContainer = styled.div`
   color: ${Cores.Destaque};
@@ -201,4 +204,40 @@ export const ConfirmedContainer = styled.div`
     line-height: 18.75px;
     margin-bottom: 8px;
   }
+`
+export const InputContent = styled.div<InputProps>`
+  font-size: 14px;
+  width: ${(props) => props.maxWidth};
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: black;
+  }
+`
+
+export const InputField = styled(Field)`
+  margin-bottom: 8px;
+  height: 32px;
+  width: 100%;
+  background-color: ${Cores.Fundo};
+  padding: 0 8px;
+  border: none;
+
+  &.error {
+    border: 1px solid red;
+  }
+`
+
+export const Row = styled.div`
+  display: flex;
+  column-gap: 34px;
+  justify-content: space-between;
+`
+
+export const ButtonContainer = styled.div`
+  margin-top: 16px;
 `
